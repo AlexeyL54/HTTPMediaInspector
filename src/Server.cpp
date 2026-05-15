@@ -3,6 +3,11 @@
 #include "../lib/cpp-httplib/httplib.h"
 #include <iostream>
 
+/**
+ * @brief Конструктор.
+ * @param port порт для прослушивания.
+ * @param inspector Экземпляр Inspector для сканирования файлов.
+ */
 Server::Server(uint16_t port, std::unique_ptr<Inspector> inspector)
     : port_(port), inspector_(std::move(inspector)) {
 
@@ -12,8 +17,15 @@ Server::Server(uint16_t port, std::unique_ptr<Inspector> inspector)
   }
 }
 
+/**
+ * @brief Сигнализирует серверу об остановке после завершения текущих
+ * операций.
+ */
 Server::~Server() { stop(); }
 
+/**
+ * @brief Запускает HTTP-сервер и блокируется до вызова stop().
+ */
 void Server::run() {
   httplib::Server svr;
 
@@ -50,8 +62,16 @@ void Server::run() {
   }
 }
 
+/**
+ * @brief Сигнализирует серверу об остановке после завершения текущих
+ * операций.
+ */
 void Server::stop() { running_ = false; }
 
+/**
+ * @brief Обработчик HTTP-запроса GET /media_files.
+ * @return JSON-строка со списками аудио, видео и изображений.
+ */
 std::string Server::handleMediaFiles() const {
   if (!inspector_) {
     return R"({"error": "Inspector not available"})";

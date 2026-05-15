@@ -1,4 +1,3 @@
-// Server.hpp
 #pragma once
 
 #include "Inspector.hpp"
@@ -45,8 +44,8 @@ private:
    */
   std::string handleMediaFiles() const;
 
-  std::atomic<bool> running_{true};           /// Флаг работы сервера
-  uint16_t port_;                             /// Порт для прослушивания
-  std::unique_ptr<Inspector> inspector_;      /// Инспектор для сканирования
-  std::unique_ptr<std::thread> serverThread_; /// Поток HTTP-сервера
+  std::atomic<bool> running_{true};           ///< Флаг работы сервера
+  uint16_t port_;                             ///< Порт для прослушивания
+  std::unique_ptr<Inspector> inspector_;      ///< Инспектор для сканирования
+  std::unique_ptr<std::thread> serverThread_; ///< Поток HTTP-сервера
 };

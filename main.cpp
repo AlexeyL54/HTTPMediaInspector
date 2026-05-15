@@ -18,7 +18,7 @@ static void printUsage(const char *argv0) {
                "умолчанию: 5)\n"
             << "  -d директория   : Директория для сканирования (по умолчанию "
                "домашняя)\n"
-            << "  -p порт         : Порт HTTP-сервера (по умолчанию: 8080)\n"
+            << "  -p порт         : Порт HTTP-сервера (по умолчанию: 1234)\n"
             << "  -h              : Показать эту справку\n"
             << std::endl;
 }
@@ -26,8 +26,8 @@ static void printUsage(const char *argv0) {
 /**
  * @brief Выводит информацию о запуске сервера.
  * @param port порт.
- *  @param interval интервал сканирования файловой системы
- *  @param dir путь
+ * @param interval интервал сканирования файловой системы
+ * @param dir путь
  */
 static void printInfo(uint16_t port, uint32_t interval, const std::string dir) {
   std::cout << "Запуск сервера на http://localhost:" << port << "/media_files"
@@ -38,7 +38,7 @@ static void printInfo(uint16_t port, uint32_t interval, const std::string dir) {
 }
 
 int main(int argc, char *argv[]) {
-  uint16_t port = 8080;
+  uint16_t port = 1234;
   uint32_t interval = 5;
   std::string dir = getenv("HOME");
 
@@ -61,11 +61,6 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if (!dir.empty() && dir.back() != '/') {
-    dir += '/';
-  }
-
-  // Создаём инспектор для периодического сканирования директории
   std::unique_ptr<Inspector> inspector =
       std::make_unique<Inspector>(dir, interval);
 
