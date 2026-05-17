@@ -1,4 +1,4 @@
-# HTTP Media Inspector - Инспектор мультимедийных файлов
+# HTTP Media Inspector
 
 Легковесное приложение на C++ для сканирования директории и отслеживания мультимедийных файлов (аудио, видео, изображения) с предоставлением результатов через HTTP API.
 
@@ -30,7 +30,7 @@
 ```bash
 # Клонирование репозитория
 git clone https://github.com/AlexeyL54/HTTPMediaInspector.git
-cd fileInspector
+cd HTTPMediaInspector
 
 # Создание директории для сборки
 mkdir build && cd build
@@ -148,4 +148,3 @@ fileInspector
 │   ├── test.cpp             # тесты
 │   └── CMakeLists.txt       # Сборка тестов
 └── CMakeLists.txt           # Конфигурация сборки приложения
-```
